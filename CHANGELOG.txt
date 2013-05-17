@@ -1,0 +1,56 @@
+********************************************************************************
+v3.8
+ApplanixPOSPacModule
+    * merged POSPac_DataFile and POSPac_Project into single module for POSPac
+      data file comprehension.
+    * fixed trueHeading equation
+    Class project:
+        * added dataFileFieldCounts for known types and POSPac versions
+        * added auto detect for field count if unknown, basically brute forces
+          until object creation doesn't fail (dependant on good checking
+	Class dataFile:
+	    * 
+
+********************************************************************************
+v3.7
+POSPac_DataFile.py
+      * Fixed getPredictedMsgNumByTime to santy check against endTime instead of
+        time*timeInc which can overshoot the end of a file where the data rate
+        is slightly slower than predicted
+      * Added timeLength for use in getPredictedMsgNumByTime
+      * Fixed getPredictedMsgNumByTime to stop predicting message numbers past
+        the end of the file 
+      * Removed kernel from class (moved to POSPacProject)
+
+navdif.py
+      * Changed struct call to use expanded argument notation (*args), cleaner code
+      * switched navdif to use POSPas_DataFile calls to trueVelocity/trueHeading
+********************************************************************************
+v3.6
+autoqc_gui.py
+      * fixed progress bar in GUI
+
+autoqc.py
+      * switched to new module name POSPac_DataFile
+      * updated to use module *_FIELD_COUNT and *_FILETYPE_MASK values
+
+navdif.py
+
+POSPac_DataFile.py
+      * added filetype and field definitions
+      * added trueVelocity and trueHeading functions to module based on
+        documented formula
+      * fixed getCommonIntEnd to use class value endTime return value isn't
+        outside of timeframe
+
+********************************************************************************
+v3.0
+      * added GUI module autoqc_gui.py
+
+navdif.py
+      * added progress handles to function
+
+
+********************************************************************************
+v2.0
+      * Converted code to a python module from MATLAB, indexes still start at 1
